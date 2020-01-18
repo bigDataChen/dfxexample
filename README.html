@@ -1,0 +1,30 @@
+<h1>DFX SDK Python</h1>
+<p>libdfxpython is the Python 3 wrapper for the <a href="https://deepaffex.ai/en/developers-sdk.html">Nuralogix DeepAffex™ SDK</a></p>
+<h2>Installation</h2>
+<p>Download the appropriate wheel file for your OS (Windows, Linux or macOS) and install using <code>pip</code>.</p>
+<pre><code>pip install ./libdfx-4.0.4-py3-none-linux_x86_64.whl  # Replace filename with the one for your OS
+</code></pre>
+<p>While libdfxpython itself doesn't have any dependencies other than <code>cffi</code>, we highly recommend using
+<code>opencv-python</code> to interact with it.</p>
+<h2>Running the example</h2>
+<p>The example script in this archive (<code>dfxexample.py</code>) requires <code>opencv-python</code>. For a quick test, download
+the DFX Example archive, which contains:</p>
+<ul>
+<li>Video file - dfxDemoCP1.mov</li>
+<li>Face tracking points - dfxDemoCP1-faces.json</li>
+</ul>
+<p>You will also need a <em>study configuration file</em>, which you should have obtained directly from
+Nuralogix. A generic example (<code>generic-v8.dat</code>) is available in the dfxsdk/res/models folder of the C/C++ SDK.</p>
+<p>In a terminal shell, run:</p>
+<pre><code>pip install opencv-python
+python dfxexample.py dfxDemoCP1.mov dfxDemoCP1-faces.json generic-v8.dat -o chunks
+</code></pre>
+<h3>Example output</h3>
+<p>The output of running the example is several files (in the chunks folder) which contain the data to be sent
+to the server. Specifically, the payload0.bin contains the binary payload and properties0.json contains the
+Server API DataRequest property values describing the payload, for the first chunk.</p>
+<pre><code>payload0.bin
+properties0.json
+metadata0.bin
+etc.
+</code></pre>
